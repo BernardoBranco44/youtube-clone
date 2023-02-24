@@ -13,6 +13,7 @@ function Navbar() {
       sx={{
         position: "sticky",
         background: "#121212",
+        top: 0,
         justifyContent: "space-between",
       }}
     >

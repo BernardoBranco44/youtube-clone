@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { Stack, Box, Typography } from "@mui/material";
 import Sidebar from "./Sidebar";
 import Videos from "./Videos";
-import { fetchFromApi } from "../utils/fetchFromApi";
+import { fetchFromAPI } from "../utils/fetchFromApi";
 
 function Feed() {
   const [selectedCategory, setSelectedCategory] = useState("New");
+  const [videos, setVideos] = useState([])
 
   useEffect(() => {
-    fetchFromApi(`search?part=snippet&q=${selectedCategory}`);
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
+    .then((data) => setVideos(data.items));
   }, [selectedCategory]);
 
   return (
@@ -39,9 +41,9 @@ function Feed() {
           mb={2}
           sx={{ color: "white" }}
         >
-          New <span style={{ color: "#FC1503" }}>videos</span>
+          {selectedCategory} <span style={{ color: "#FC1503" }}>videos</span>
         </Typography>
-        <Videos videos={[]} />
+        <Videos videos={videos} />
       </Box>
     </Stack>
   );
