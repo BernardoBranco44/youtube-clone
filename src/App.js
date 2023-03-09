@@ -13,7 +13,7 @@ function App() {
       <Box className="box">
         <Navbar />
         <Routes>
-          <Route path="/" exact element={<Feed />} />
+          <Route path="/youtube-clone" exact element={<Feed />} />
           <Route path="/video/:id" element={<VideoDetail />} />
           <Route path="/channel/:id" element={<ChannelDetail />} />
           <Route path="/search/:searchTerm" element={<SearchFeed />} />
